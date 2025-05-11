@@ -22,120 +22,77 @@ export default function BatchCard({ batchId, duration, status, completion, pilot
     }
   };
 
-  const getStatusIcon = () => {
-    switch (status) {
-      case 'Completed': return <CheckCircleIcon sx={{ fontSize: 16 }} />;
-      case 'Ongoing': return <PendingIcon sx={{ fontSize: 16 }} />;
-      case 'Upcoming': return <ScheduleIcon sx={{ fontSize: 16 }} />;
-      default: return null;
-    }
-  };
-
   return (
     <Box sx={{ 
-      p: 3, 
+      p: 2.5,
       bgcolor: '#fff', 
-      borderRadius: 2,
-      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+      borderRadius: 1,
+      boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
       '&:hover': {
-        boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-        transform: 'translateY(-2px)',
-        transition: 'all 0.2s ease-in-out'
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
       }
     }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
-        <Box>
-          <Typography variant="subtitle2" color="text.secondary">Batch ID</Typography>
-          <Typography variant="h6" fontWeight="bold">{batchId}</Typography>
+      <Box sx={{ mb: 1.5 }}>
+        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 0.5 }}>
+          Batch ID
+        </Typography>
+        <Typography variant="body1" sx={{ fontWeight: 500 }}>
+          {batchId}
+        </Typography>
+      </Box>
+
+      <Box sx={{ mb: 1.5 }}>
+        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 0.5 }}>
+          Duration
+        </Typography>
+        <Typography variant="body2">
+          {duration}
+        </Typography>
+      </Box>
+
+      {pilotsCount && (
+        <Box sx={{ mb: 1.5 }}>
+          <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 0.5 }}>
+            Pilot Stats
+          </Typography>
+          <Typography variant="body2">
+            Pass: {pilotsCount.passed || 0}
+          </Typography>
+          <Typography variant="body2">
+            Fail: {pilotsCount.failed || 0}
+          </Typography>
         </Box>
+      )}
+
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2 }}>
+        <Button 
+          variant="text"
+          size="small"
+          sx={{ 
+            textTransform: 'none',
+            color: '#1976d2',
+            '&:hover': {
+              bgcolor: 'transparent',
+              textDecoration: 'underline'
+            }
+          }}
+        >
+          View Details
+        </Button>
         <Typography 
-          variant="button" 
+          variant="caption" 
           sx={{ 
             color: getStatusColor(),
             bgcolor: getStatusBg(),
-            px: 2,
+            px: 1.5,
             py: 0.5,
             borderRadius: 1,
-            fontSize: '0.75rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 0.5
+            fontSize: '0.75rem'
           }}
         >
-          {getStatusIcon()}
           {status}
         </Typography>
       </Box>
-      
-      <Typography variant="subtitle2" color="text.secondary">Duration</Typography>
-      <Typography variant="body2" sx={{ mb: 2 }}>{duration}</Typography>
-      
-      {completion && (
-        <Box sx={{ mb: 2 }}>
-          <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-            Completion Rate
-          </Typography>
-          <Box sx={{ 
-            height: 4, 
-            bgcolor: '#e0e0e0', 
-            borderRadius: 2, 
-            overflow: 'hidden',
-            mb: 1
-          }}>
-            <Box sx={{ 
-              width: `${completion}%`, 
-              height: '100%', 
-              bgcolor: 'primary.main',
-              borderRadius: 2
-            }} />
-          </Box>
-          <Typography variant="body2" color="text.secondary">
-            {completion}%
-          </Typography>
-        </Box>
-      )}
-
-      {pilotsCount && (
-        <Box sx={{ mb: 2 }}>
-          <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-            Pilots
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 2 }}>
-            <Typography variant="body2">
-              Total: {pilotsCount.total}
-            </Typography>
-            {pilotsCount.passed && (
-              <Typography variant="body2" color="success.main">
-                Passed: {pilotsCount.passed}
-              </Typography>
-            )}
-            {pilotsCount.failed && (
-              <Typography variant="body2" color="error.main">
-                Failed: {pilotsCount.failed}
-              </Typography>
-            )}
-            {pilotsCount.inProgress && (
-              <Typography variant="body2" color="info.main">
-                In Progress: {pilotsCount.inProgress}
-              </Typography>
-            )}
-          </Box>
-        </Box>
-      )}
-      
-      <Button 
-        variant="outlined" 
-        size="small" 
-        fullWidth
-        sx={{ 
-          textTransform: 'none',
-          '&:hover': {
-            bgcolor: '#e3f2fd'
-          }
-        }}
-      >
-        View Details
-      </Button>
     </Box>
   );
 }

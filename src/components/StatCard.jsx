@@ -4,19 +4,19 @@ export default function StatCard({ title, value, subtitle, icon }) {
   return (
     <Box sx={{ 
       bgcolor: '#fff',
-      p: 3,
-      borderRadius: 2,
-      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-      minWidth: 220,
+      p: 2.5,
+      borderRadius: 1,
+      boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
+      minWidth: 200,
       display: 'flex',
       flexDirection: 'column',
-      gap: 1.5,
+      gap: 1,
       flex: 1
     }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
         {icon && (
           <Box sx={{ 
-            bgcolor: '#e3f2fd', 
+            bgcolor: '#f5f5f5', 
             p: 1, 
             borderRadius: 1,
             display: 'flex',
@@ -26,15 +26,15 @@ export default function StatCard({ title, value, subtitle, icon }) {
             {icon}
           </Box>
         )}
-        <Typography variant="h4" fontWeight="bold" color="primary">
+        <Typography variant="h4" sx={{ fontWeight: 500, color: '#1976d2' }}>
           {value}
         </Typography>
       </Box>
       <Box>
-        <Typography variant="body1" color="text.primary" fontWeight="medium" gutterBottom>
+        <Typography variant="body1" sx={{ color: '#333', fontWeight: 500, mb: 0.5 }}>
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" sx={{ color: '#666' }}>
           {subtitle}
         </Typography>
       </Box>

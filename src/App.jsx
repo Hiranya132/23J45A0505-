@@ -17,73 +17,62 @@ function App() {
   return (
     <Box sx={{ display: 'flex', bgcolor: '#f8fafc', minHeight: '100vh' }}>
       <Sidebar onViewChange={setSelectedView} />
-      <Box sx={{ flex: 1, p: 4 }}>
+      <Box sx={{ flex: 1, p: 3 }}>
         {selectedView === 'dashboard' ? (
           <>
-            <Box sx={{ display: 'flex', gap: 3, mb: 4 }}>
+            <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
               <StatCard 
                 title="Total No. of Pilots" 
                 value="450" 
                 subtitle="Trained and Intraining" 
-                icon={<GroupIcon color="primary" />}
+                icon={<GroupIcon sx={{ color: '#1976d2' }} />}
               />
               <StatCard 
                 title="Pass Rate" 
                 value="300" 
                 subtitle="Trained" 
-                icon={<SchoolIcon color="primary" />}
+                icon={<SchoolIcon sx={{ color: '#1976d2' }} />}
               />
               <StatCard 
                 title="Pilots in Training" 
                 value="150" 
                 subtitle="Running" 
-                icon={<PendingActionsIcon color="primary" />}
+                icon={<PendingActionsIcon sx={{ color: '#1976d2' }} />}
+              />
+              <StatCard 
+                title="Total Success" 
+                value="70" 
+                subtitle="Completed and Running" 
+                icon={<TrendingUpIcon sx={{ color: '#1976d2' }} />}
               />
               <StatCard 
                 title="Success Rate" 
                 value="84.66%" 
-                subtitle="Completed and Running" 
-                icon={<TrendingUpIcon color="primary" />}
-              />
-              <StatCard 
-                title="Total Batches" 
-                value="12" 
-                subtitle="Active and Completed" 
-                icon={<EmojiEventsIcon color="primary" />}
+                subtitle="Overall Performance" 
+                icon={<EmojiEventsIcon sx={{ color: '#1976d2' }} />}
               />
             </Box>
             
             <Box sx={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
-              gap: 3,
-              mt: 4 
+              gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', 
+              gap: 2,
+              mt: 3 
             }}>
-              <BatchCard 
-                batchId="B001"
-                duration="01 Aug 2023 - 01 Sep 2023"
-                status="Completed"
-                completion="75"
-                pilotsCount={{ total: 20, passed: 15, failed: 5 }}
-              />
-              <BatchCard 
-                batchId="B002"
-                duration="01 Aug 2023 - 01 Sep 2023"
-                status="Ongoing"
-                pilotsCount={{ total: 18, inProgress: 18 }}
-              />
-              <BatchCard 
-                batchId="B003"
-                duration="01 Aug 2023 - 01 Sep 2023"
-                status="Ongoing"
-                pilotsCount={{ total: 15, inProgress: 15 }}
-              />
-              <BatchCard 
-                batchId="B004"
-                duration="01 Aug 2023 - 01 Sep 2023"
-                status="Upcoming"
-                pilotsCount={{ total: 20 }}
-              />
+              {[...Array(12)].map((_, index) => (
+                <BatchCard 
+                  key={`B00${index + 1}`}
+                  batchId={`B00${index + 1}`}
+                  duration="01 Aug 2023 - 01 Sep 2023"
+                  status={index < 3 ? "Completed" : index < 8 ? "Ongoing" : "Upcoming"}
+                  completion={index < 3 ? "75" : undefined}
+                  pilotsCount={{
+                    total: 20,
+                    passed: index < 3 ? 15 : undefined,
+                    failed: index < 3 ? 5 : undefined
+                  }}
+                />
+              ))}
             </Box>
           </>
         ) : (
