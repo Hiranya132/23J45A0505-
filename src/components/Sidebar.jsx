@@ -9,36 +9,58 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 export default function Sidebar({ onViewChange }) {
   return (
     <Box sx={{ width: 240, bgcolor: '#fff', height: '100vh', borderRight: '1px solid #eee' }}>
-      <Box sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
-        <img 
-          src="https://images.pexels.com/photos/3864903/pexels-photo-3864903.jpeg?auto=compress&cs=tinysrgb&w=50" 
-          alt="Salam Kisan" 
-          style={{ width: 40, height: 40, borderRadius: '50%' }} 
-        />
-        <Typography variant="h6" sx={{ color: '#333' }}>SALAM KISAN</Typography>
+      <Box sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2, borderBottom: '1px solid #eee' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <img 
+            src="https://images.pexels.com/photos/3864903/pexels-photo-3864903.jpeg?auto=compress&cs=tinysrgb&w=40" 
+            alt="Salam Kisan" 
+            style={{ width: 32, height: 32, borderRadius: '50%' }} 
+          />
+          <Typography variant="h6" sx={{ color: '#333', fontSize: '1.1rem', fontWeight: 500 }}>
+            SALAM KISAN
+          </Typography>
+        </Box>
       </Box>
-      <List>
-        <ListItem button selected onClick={() => onViewChange('dashboard')} sx={{ '&.Mui-selected': { bgcolor: '#e3f2fd' } }}>
+      <List sx={{ pt: 2 }}>
+        <ListItem 
+          button 
+          selected 
+          onClick={() => onViewChange('dashboard')} 
+          sx={{ 
+            '&.Mui-selected': { 
+              bgcolor: '#e3f2fd',
+              '&:hover': { bgcolor: '#e3f2fd' }
+            },
+            mb: 1
+          }}
+        >
           <ListItemIcon><DashboardIcon color="primary" /></ListItemIcon>
           <ListItemText primary="Dashboards" />
         </ListItem>
-        <ListItem button onClick={() => onViewChange('batch-details')} sx={{ '&:hover': { bgcolor: '#e3f2fd' } }}>
+        <ListItem 
+          button 
+          onClick={() => onViewChange('batch-details')} 
+          sx={{ 
+            '&:hover': { bgcolor: '#f5f5f5' },
+            mb: 1
+          }}
+        >
           <ListItemIcon><GroupIcon /></ListItemIcon>
           <ListItemText primary="Batch" />
         </ListItem>
-        <ListItem button sx={{ '&:hover': { bgcolor: '#e3f2fd' } }}>
+        <ListItem button sx={{ '&:hover': { bgcolor: '#f5f5f5' }, mb: 1 }}>
           <ListItemIcon><PersonIcon /></ListItemIcon>
           <ListItemText primary="Profile" />
         </ListItem>
-        <ListItem button sx={{ '&:hover': { bgcolor: '#e3f2fd' } }}>
+        <ListItem button sx={{ '&:hover': { bgcolor: '#f5f5f5' }, mb: 1 }}>
           <ListItemIcon><EventNoteIcon /></ListItemIcon>
           <ListItemText primary="Attendance" />
         </ListItem>
-        <ListItem button sx={{ '&:hover': { bgcolor: '#e3f2fd' } }}>
+        <ListItem button sx={{ '&:hover': { bgcolor: '#f5f5f5' }, mb: 1 }}>
           <ListItemIcon><NotificationsIcon /></ListItemIcon>
           <ListItemText primary="Notification" />
         </ListItem>
-        <ListItem button sx={{ '&:hover': { bgcolor: '#e3f2fd' } }}>
+        <ListItem button sx={{ '&:hover': { bgcolor: '#f5f5f5' }, mb: 1 }}>
           <ListItemIcon><LogoutIcon /></ListItemIcon>
           <ListItemText primary="Logout" />
         </ListItem>
