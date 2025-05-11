@@ -1,5 +1,7 @@
 import { Box, Typography, Paper, Grid } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import PersonIcon from '@mui/icons-material/Person';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 
 export default function BatchDetails() {
   return (
@@ -37,11 +39,7 @@ export default function BatchDetails() {
         <Grid item xs={12} md={4}>
           <Paper sx={{ p: 2.5, height: '100%', borderRadius: 1, bgcolor: '#f8f9fa' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-              <img 
-                src="https://images.pexels.com/photos/3864903/pexels-photo-3864903.jpeg?auto=compress&cs=tinysrgb&w=30" 
-                alt="Instructor" 
-                style={{ width: 24, height: 24, borderRadius: '50%' }} 
-              />
+              <PersonIcon sx={{ color: '#1976d2' }} />
               <Typography variant="h6">Instructor Info</Typography>
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
@@ -68,11 +66,7 @@ export default function BatchDetails() {
         <Grid item xs={12} md={4}>
           <Paper sx={{ p: 2.5, height: '100%', borderRadius: 1, bgcolor: '#f8f9fa' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-              <img 
-                src="https://images.pexels.com/photos/3864903/pexels-photo-3864903.jpeg?auto=compress&cs=tinysrgb&w=30" 
-                alt="Schedule" 
-                style={{ width: 24, height: 24, borderRadius: '50%' }} 
-              />
+              <CalendarTodayIcon sx={{ color: '#1976d2' }} />
               <Typography variant="h6">Training Schedule</Typography>
             </Box>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>

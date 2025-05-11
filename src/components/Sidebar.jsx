@@ -12,9 +12,9 @@ export default function Sidebar({ onViewChange }) {
       <Box sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2, borderBottom: '1px solid #eee' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <img 
-            src="https://images.pexels.com/photos/3864903/pexels-photo-3864903.jpeg?auto=compress&cs=tinysrgb&w=40" 
+            src="https://images.pexels.com/photos/1034812/pexels-photo-1034812.jpeg?auto=compress&cs=tinysrgb&w=40" 
             alt="Salam Kisan" 
-            style={{ width: 32, height: 32, borderRadius: '50%' }} 
+            style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover' }} 
           />
           <Typography variant="h6" sx={{ color: '#333', fontSize: '1.1rem', fontWeight: 500 }}>
             SALAM KISAN
