@@ -18,10 +18,20 @@ export default function Sidebar({ onViewChange }) {
         bgcolor: '#006837'
       }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-          <img 
-            src="https://raw.githubusercontent.com/salam-kisan/salam-kisan/main/logo.png" 
-            alt="Salam Kisan Logo" 
-            style={{ width: 40, height: 40, objectFit: 'contain', borderRadius: '50%' }} 
+          <Box 
+            component="img"
+            src="https://raw.githubusercontent.com/salam-kisan/salam-kisan/main/logo.png"
+            alt="Salam Kisan Logo"
+            sx={{ 
+              width: 32,
+              height: 32,
+              borderRadius: '50%',
+              bgcolor: '#fff',
+              p: 0.5,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
           />
           <Typography variant="h6" sx={{ color: '#fff', fontSize: '1.1rem', fontWeight: 500 }}>
             SALAM KISAN
