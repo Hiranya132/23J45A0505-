@@ -26,10 +26,13 @@ export default function BatchCard({ batchId, duration, status, completion, pilot
     <Box sx={{ 
       p: 2.5,
       bgcolor: '#fff', 
-      borderRadius: 1,
+      borderRadius: 2,
       boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
+      transition: 'all 0.3s ease',
       '&:hover': {
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+        transform: 'translateY(-4px)',
+        boxShadow: '0 4px 8px rgba(0,0,0,0.15)',
+        bgcolor: '#f8fafc'
       }
     }}>
       <Box sx={{ mb: 1.5 }}>
@@ -72,7 +75,7 @@ export default function BatchCard({ batchId, duration, status, completion, pilot
             textTransform: 'none',
             color: '#1976d2',
             '&:hover': {
-              bgcolor: 'transparent',
+              bgcolor: '#e3f2fd',
               textDecoration: 'underline'
             }
           }}
@@ -87,7 +90,8 @@ export default function BatchCard({ batchId, duration, status, completion, pilot
             px: 1.5,
             py: 0.5,
             borderRadius: 1,
-            fontSize: '0.75rem'
+            fontSize: '0.75rem',
+            fontWeight: 500
           }}
         >
           {status}

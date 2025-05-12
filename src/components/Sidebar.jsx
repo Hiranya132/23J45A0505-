@@ -9,14 +9,21 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 export default function Sidebar({ onViewChange }) {
   return (
     <Box sx={{ width: 240, bgcolor: '#fff', height: '100vh', borderRight: '1px solid #eee' }}>
-      <Box sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2, borderBottom: '1px solid #eee' }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+      <Box sx={{ 
+        p: 2, 
+        display: 'flex', 
+        alignItems: 'center', 
+        gap: 2, 
+        borderBottom: '1px solid #eee',
+        bgcolor: '#006837'
+      }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <img 
-            src="https://images.pexels.com/photos/1034812/pexels-photo-1034812.jpeg?auto=compress&cs=tinysrgb&w=40" 
-            alt="Salam Kisan" 
-            style={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover' }} 
+            src="https://raw.githubusercontent.com/salam-kisan/salam-kisan/main/logo.png" 
+            alt="Salam Kisan Logo" 
+            style={{ width: 40, height: 40, objectFit: 'contain', borderRadius: '50%' }} 
           />
-          <Typography variant="h6" sx={{ color: '#333', fontSize: '1.1rem', fontWeight: 500 }}>
+          <Typography variant="h6" sx={{ color: '#fff', fontSize: '1.1rem', fontWeight: 500 }}>
             SALAM KISAN
           </Typography>
         </Box>
