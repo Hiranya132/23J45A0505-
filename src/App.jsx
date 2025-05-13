@@ -48,7 +48,7 @@ function App() {
               />
               <StatCard 
                 title="Success Rate" 
-                value="84.66%" 
+                value="84,66%" 
                 subtitle="Overall Performance" 
                 icon={<EmojiEventsIcon sx={{ color: '#1976d2' }} />}
               />
@@ -77,6 +77,10 @@ function App() {
             </Box>
           </>
         );
+      case 'notification':
+        return <NotificationPage />;
+      case 'profile':
+        return <ProfilePage />;
       case 'batch-details':
         return (
           <>
@@ -84,10 +88,6 @@ function App() {
             <PilotList />
           </>
         );
-      case 'notification':
-        return <NotificationPage />;
-      case 'profile':
-        return <ProfilePage />;
       default:
         return null;
     }
