@@ -1,14 +1,12 @@
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography, Button, LinearProgress } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import PendingIcon from '@mui/icons-material/Pending';
-import ScheduleIcon from '@mui/icons-material/Schedule';
 
 export default function BatchCard({ batchId, duration, status, completion, pilotsCount }) {
   const getStatusColor = () => {
     switch (status) {
       case 'Completed': return '#4caf50';
-      case 'Ongoing': return '#f44336';
-      case 'Upcoming': return '#ff9800';
+      case 'Ongoing': return '#dc3545';
+      case 'Upcoming': return '#ffc107';
       default: return '#2196f3';
     }
   };
@@ -24,28 +22,25 @@ export default function BatchCard({ batchId, duration, status, completion, pilot
 
   return (
     <Box sx={{ 
-      p: 2.5,
+      p: 2,
       bgcolor: '#fff', 
-      borderRadius: 2,
-      boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
-      transition: 'all 0.3s ease',
-      '&:hover': {
-        transform: 'translateY(-4px)',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.15)',
-        bgcolor: '#f8fafc'
-      }
+      borderRadius: 1,
+      boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column'
     }}>
-      <Box sx={{ mb: 1.5 }}>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 0.5 }}>
+      <Box sx={{ mb: 2 }}>
+        <Typography variant="subtitle2" color="text.secondary">
           Batch ID
         </Typography>
-        <Typography variant="body1" sx={{ fontWeight: 500 }}>
+        <Typography variant="body1" fontWeight={500}>
           {batchId}
         </Typography>
       </Box>
 
-      <Box sx={{ mb: 1.5 }}>
-        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 0.5 }}>
+      <Box sx={{ mb: 2 }}>
+        <Typography variant="subtitle2" color="text.secondary">
           Duration
         </Typography>
         <Typography variant="body2">
@@ -53,29 +48,62 @@ export default function BatchCard({ batchId, duration, status, completion, pilot
         </Typography>
       </Box>
 
-      {pilotsCount && (
-        <Box sx={{ mb: 1.5 }}>
-          <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 0.5 }}>
-            Pilot Stats
-          </Typography>
-          <Typography variant="body2">
-            Pass: {pilotsCount.passed || 0}
-          </Typography>
-          <Typography variant="body2">
-            Fail: {pilotsCount.failed || 0}
-          </Typography>
+      {completion && (
+        <Box sx={{ mb: 2 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+            <Typography variant="body2" color="text.secondary">
+              Completion
+            </Typography>
+            <Typography variant="body2" fontWeight={500}>
+              {completion}%
+            </Typography>
+          </Box>
+          <LinearProgress 
+            variant="determinate" 
+            value={parseInt(completion)} 
+            sx={{ 
+              height: 6, 
+              borderRadius: 1,
+              bgcolor: '#e0e0e0',
+              '& .MuiLinearProgress-bar': {
+                bgcolor: '#4caf50'
+              }
+            }} 
+          />
         </Box>
       )}
 
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2 }}>
+      {pilotsCount && (
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 0.5 }}>
+            Pilot Stats
+          </Typography>
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            <Typography variant="body2">
+              Total: {pilotsCount.total}
+            </Typography>
+            {pilotsCount.passed !== undefined && (
+              <Typography variant="body2">
+                Pass: {pilotsCount.passed}
+              </Typography>
+            )}
+            {pilotsCount.failed !== undefined && (
+              <Typography variant="body2">
+                Fail: {pilotsCount.failed}
+              </Typography>
+            )}
+          </Box>
+        </Box>
+      )}
+
+      <Box sx={{ mt: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Button 
-          variant="text"
+          variant="text" 
           size="small"
           sx={{ 
-            textTransform: 'none',
             color: '#1976d2',
             '&:hover': {
-              bgcolor: '#e3f2fd',
+              bgcolor: 'transparent',
               textDecoration: 'underline'
             }
           }}
@@ -90,7 +118,6 @@ export default function BatchCard({ batchId, duration, status, completion, pilot
             px: 1.5,
             py: 0.5,
             borderRadius: 1,
-            fontSize: '0.75rem',
             fontWeight: 500
           }}
         >

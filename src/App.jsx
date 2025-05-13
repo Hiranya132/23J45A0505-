@@ -5,6 +5,8 @@ import StatCard from './components/StatCard';
 import BatchCard from './components/BatchCard';
 import BatchDetails from './components/BatchDetails';
 import PilotList from './components/PilotList';
+import NotificationPage from './components/NotificationPage';
+import ProfilePage from './components/ProfilePage';
 import GroupIcon from '@mui/icons-material/Group';
 import SchoolIcon from '@mui/icons-material/School';
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
@@ -14,13 +16,12 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 function App() {
   const [selectedView, setSelectedView] = useState('dashboard');
 
-  return (
-    <Box sx={{ display: 'flex', bgcolor: '#f8fafc', minHeight: '100vh' }}>
-      <Sidebar onViewChange={setSelectedView} />
-      <Box sx={{ flex: 1, p: 3 }}>
-        {selectedView === 'dashboard' ? (
+  const renderContent = () => {
+    switch (selectedView) {
+      case 'dashboard':
+        return (
           <>
-            <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
+            <Box sx={{ display: 'flex', gap: 2, mb: 3, flexWrap: 'wrap' }}>
               <StatCard 
                 title="Total No. of Pilots" 
                 value="450" 
@@ -55,7 +56,7 @@ function App() {
             
             <Box sx={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', 
+              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
               gap: 2,
               mt: 3 
             }}>
@@ -65,7 +66,7 @@ function App() {
                   batchId={`B00${index + 1}`}
                   duration="01 Aug 2023 - 01 Sep 2023"
                   status={index < 3 ? "Completed" : index < 8 ? "Ongoing" : "Upcoming"}
-                  completion={index < 3 ? "75" : undefined}
+                  completion={index < 3 ? (75 + index * 5).toString() : undefined}
                   pilotsCount={{
                     total: 20,
                     passed: index < 3 ? 15 : undefined,
@@ -75,12 +76,28 @@ function App() {
               ))}
             </Box>
           </>
-        ) : (
+        );
+      case 'batch-details':
+        return (
           <>
             <BatchDetails />
             <PilotList />
           </>
-        )}
+        );
+      case 'notification':
+        return <NotificationPage />;
+      case 'profile':
+        return <ProfilePage />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <Box sx={{ display: 'flex', bgcolor: '#f8fafc', minHeight: '100vh' }}>
+      <Sidebar onViewChange={setSelectedView} selectedView={selectedView} />
+      <Box sx={{ flex: 1, p: 3, overflowY: 'auto' }}>
+        {renderContent()}
       </Box>
     </Box>
   );
