@@ -26,31 +26,31 @@ function App() {
                 title="Total No. of Pilots" 
                 value="450" 
                 subtitle="Trained and Intraining" 
-                icon={<GroupIcon sx={{ color: '#1976d2' }} />}
+                icon={<GroupIcon sx={{ color: '#2196f3' }} />}
               />
               <StatCard 
                 title="Pass Rate" 
                 value="300" 
                 subtitle="Trained" 
-                icon={<SchoolIcon sx={{ color: '#1976d2' }} />}
+                icon={<SchoolIcon sx={{ color: '#2196f3' }} />}
               />
               <StatCard 
                 title="Pilots in Training" 
                 value="150" 
                 subtitle="Running" 
-                icon={<PendingActionsIcon sx={{ color: '#1976d2' }} />}
+                icon={<PendingActionsIcon sx={{ color: '#2196f3' }} />}
               />
               <StatCard 
                 title="Total Success" 
                 value="70" 
                 subtitle="Completed and Running" 
-                icon={<TrendingUpIcon sx={{ color: '#1976d2' }} />}
+                icon={<TrendingUpIcon sx={{ color: '#2196f3' }} />}
               />
               <StatCard 
                 title="Success Rate" 
                 value="84,66%" 
                 subtitle="Overall Performance" 
-                icon={<EmojiEventsIcon sx={{ color: '#1976d2' }} />}
+                icon={<EmojiEventsIcon sx={{ color: '#2196f3' }} />}
               />
             </Box>
             
@@ -69,8 +69,8 @@ function App() {
                   completion={index < 3 ? (75 + index * 5).toString() : undefined}
                   pilotsCount={{
                     total: 20,
-                    passed: index < 3 ? 15 : undefined,
-                    failed: index < 3 ? 5 : undefined
+                    passed: index < 3 ? 15 : 0,
+                    failed: index < 3 ? 5 : 0
                   }}
                 />
               ))}

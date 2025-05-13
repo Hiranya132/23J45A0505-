@@ -1,4 +1,4 @@
-import { Box, Typography, Button, LinearProgress } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 
 export default function BatchCard({ batchId, duration, status, completion, pilotsCount }) {
   const getStatusColor = () => {
@@ -15,79 +15,63 @@ export default function BatchCard({ batchId, duration, status, completion, pilot
       p: 2,
       bgcolor: '#fff', 
       borderRadius: 1,
-      boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+      boxShadow: '0 1px 2px rgba(0,0,0,0.1)',
       height: '100%',
       display: 'flex',
       flexDirection: 'column',
-      gap: 2
+      gap: 1
     }}>
-      <Box>
-        <Typography variant="subtitle2" color="text.secondary">
-          Batch ID
-        </Typography>
-        <Typography variant="body1">
-          {batchId}
-        </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <Box>
+          <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 0.5 }}>
+            Batch ID
+          </Typography>
+          <Typography variant="body1" sx={{ fontWeight: 500 }}>
+            {batchId}
+          </Typography>
+        </Box>
+        {completion && (
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            {completion}%
+          </Typography>
+        )}
       </Box>
 
       <Box>
-        <Typography variant="subtitle2" color="text.secondary">
+        <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 0.5 }}>
           Duration
         </Typography>
-        <Typography variant="body2">
+        <Typography variant="body2" color="text.secondary">
           {duration}
         </Typography>
       </Box>
 
       {pilotsCount && (
         <Box>
-          <Typography variant="subtitle2" color="text.secondary">
+          <Typography variant="subtitle2" color="text.secondary" sx={{ mb: 0.5 }}>
             Pilot Stats
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" color="text.secondary">
             Pass: {pilotsCount.passed || 0}
           </Typography>
-          <Typography variant="body2">
+          <Typography variant="body2" color="text.secondary">
             Fail: {pilotsCount.failed || 0}
           </Typography>
         </Box>
       )}
 
-      {completion && (
-        <Box sx={{ mt: 'auto' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-            <Typography variant="body2">Completion</Typography>
-            <Typography variant="body2" fontWeight={500}>{completion}%</Typography>
-          </Box>
-          <LinearProgress 
-            variant="determinate" 
-            value={parseInt(completion)} 
-            sx={{ 
-              height: 6, 
-              borderRadius: 1,
-              bgcolor: '#e0e0e0',
-              '& .MuiLinearProgress-bar': {
-                bgcolor: '#4caf50'
-              }
-            }} 
-          />
-        </Box>
-      )}
-
       <Box sx={{ 
         mt: 'auto', 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center',
         pt: 2,
-        borderTop: '1px solid #eee'
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
       }}>
         <Button 
-          variant="text"
-          size="small"
           sx={{ 
-            color: '#1976d2',
+            color: '#2196f3',
             textTransform: 'none',
+            p: 0,
             '&:hover': {
               bgcolor: 'transparent',
               textDecoration: 'underline'
@@ -99,12 +83,13 @@ export default function BatchCard({ batchId, duration, status, completion, pilot
         <Typography 
           variant="caption" 
           sx={{ 
-            color: '#fff',
-            bgcolor: getStatusColor(),
             px: 2,
             py: 0.5,
             borderRadius: 1,
-            fontSize: '0.75rem'
+            bgcolor: getStatusColor(),
+            color: '#fff',
+            fontSize: '0.75rem',
+            fontWeight: 500
           }}
         >
           {status}
