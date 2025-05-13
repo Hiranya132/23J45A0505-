@@ -20,7 +20,7 @@ export default function Sidebar({ onViewChange }) {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <Box 
             component="img"
-            src="https://raw.githubusercontent.com/salam-kisan/salam-kisan/main/logo.png"
+            src="https://i.ibb.co/Jk8FPp8/logo.png"
             alt="Salam Kisan Logo"
             sx={{ 
               width: 36,
